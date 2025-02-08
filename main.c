@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:47:49 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/08 15:49:25 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/08 16:50:22 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int ac, char **av)
 	if ((ac == 2 && !ft_strncmp(av[1], "mandelbrot", 10)) ||
 		(ac == 4 && !ft_strncmp(av[1], "julia", 5)))
 	{
+		fractal.name = av[1];
 		// Inicia la aplicación correctamente
 		fractal_init(&fractal);
 		fractal_render(&fractal);
