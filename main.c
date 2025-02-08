@@ -6,23 +6,28 @@
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:47:49 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/07 13:57:36 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/08 15:49:25 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "minilibx-linux/mlx.h"
 
 int	main(int ac, char **av)
 {
-	if (2 == ac && !ft_strncmp(av[1], "mandelbrot", 10)
-		|| 4 == ac && !ft_strncmp(av[1], "julia", 5)
+	t_fractal	fractal;
+
+	if ((ac == 2 && !ft_strncmp(av[1], "mandelbrot", 10)) ||
+		(ac == 4 && !ft_strncmp(av[1], "julia", 5)))
 	{
-		//promp correct, kick off the application
+		// Inicia la aplicación correctamente
+		fractal_init(&fractal);
+		fractal_render(&fractal);
+		mlx_loop(fractal.mlx_connection);
 	}
 	else
 	{
 		putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
-	
 }
