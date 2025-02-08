@@ -28,6 +28,15 @@
 # define WIDTH 800
 # define HIGHT 800
 
+/*Complex value*/
+typedef struct s_complex
+{
+	/*real*/
+	double	x;
+	/*imaginary*/
+	double	y;
+}	t_complex;
+
 typedef struct s_fractal
 {
 	char	*name;
@@ -47,8 +56,14 @@ typedef struct s_img
 	int		line_len;
 }	t_img;
 
-//**** String utils ***
+//**** String utils ***//
 int		ft_strncmp(char *s1, char *s2, int n);
 void	putstr_fd(char *s, int fd);
+
+/*Init */
+void	fractal_init(t_fractal *fractal);
+
+/*math*/
+double  map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 
 #endif
