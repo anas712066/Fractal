@@ -38,11 +38,18 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_complex	z;
 	t_complex	c;
+	t_range		new_range;
+	t_range		old_range;
 
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = map(x, -2, +2, 0, WIDTH);
-	c.y = map(y, +2, -2, 0, HEIGHT);
+	old_range.min = 0;
+	old_range.max = 800;
+	new_range.min = -2;
+	new_range.max = 2;
+	(void) fractal;/*Borrar este casteo ya que lo necesito cambiarlo luego*/
+	c.x = map(x, new_range, old_range);
+	c.y = map(y, new_range, old_range);
 }
 
 void	fractal_render(t_fractal *fractal)
@@ -56,7 +63,7 @@ void	fractal_render(t_fractal *fractal)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			handel_pixel(fractal, x, y);
+			handle_pixel(x, y, fractal);
 		}
 	}
 }

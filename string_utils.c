@@ -33,6 +33,6 @@ void	putstr_fd(char *s, int fd)
 	if (*s != '\0')
 	{
 		write(fd, s, 1);
-		putstr_fd(s + 1, fs);
+		putstr_fd(s + 1, fd);
 	}
 }

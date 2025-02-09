@@ -74,4 +74,8 @@ double		map(double n, t_range new_range, t_range old_range);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 
+/*render*/
+void		fractal_render(t_fractal *fractal);
+void		handle_pixel(int x, int y, t_fractal *fractal);
+
 #endif
