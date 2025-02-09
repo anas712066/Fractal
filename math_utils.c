@@ -16,7 +16,7 @@ double	map(double n, t_range new_range, t_range old_range)
 {
 	double	scale;
 
-	scaale = (new_range.max - new_range.min) / (old_range.max - old_range.min);
+	scale = (new_range.max - new_range.min) / (old_range.max - old_range.min);
 	return (scale * (n - old_range.min) + old_range.min);
 }
 

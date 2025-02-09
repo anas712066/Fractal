@@ -39,7 +39,7 @@ typedef struct s_complex
 
 typedef struct s_img
 {
-	void	*imt_ptr;/*pointer to image struct*/
+	void	*img_ptr;/*pointer to image struct*/
 	char	*pixels_ptr; /*points to the actuals pixels*/
 	int		bpp;
 	int		endian;

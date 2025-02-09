@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:53:40 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/08 17:20:50 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:24:25 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	fractal_init(t_fractal *fractal)
 			fractal->name);
 	if (NULL == fractal->mlx_window)
 	{
-		mlx_destroy_display(void *mlx_connection);
+		mlx_destroy_display(fractal->mlx_connection);
 		free(fractal->mlx_connection);
 		malloc_error();
 	}
@@ -43,7 +43,7 @@ void	fractal_init(t_fractal *fractal)
 		free(fractal->mlx_connection);
 		malloc_error();
 	}
-	fractal->img.pixels_ptr = mlx_gets_data_addr(fractal->img.img_ptr, 
+	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr, 
 			&fractal->img.bpp,
 			&fractal->img.line_len,
 			&fractal->img.endian);
