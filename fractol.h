@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef FRACTOL_H
+#ifndef FRACTOL_H
 # define FRACTOL_H
 
 # include "minilibx-linux/mlx.h"
@@ -26,7 +26,7 @@
 ./fractol mandelbrot\" or \n\t\"./fractol julia <value_1> <value_2>\"\n"
 
 # define WIDTH 800
-# define HIGHT 800
+# define HEIGHT 800
 
 /*Complex value*/
 typedef struct s_complex
@@ -37,6 +37,15 @@ typedef struct s_complex
 	double	y;
 }	t_complex;
 
+typedef struct s_img
+{
+	void	*imt_ptr;/*pointer to image struct*/
+	char	*pixels_ptr; /*points to the actuals pixels*/
+	int		bpp;
+	int		endian;
+	int		line_len;
+}	t_img;
+
 typedef struct s_fractal
 {
 	char	*name;
@@ -46,15 +55,6 @@ typedef struct s_fractal
 	t_img	img;
 	/*Hooks member variable*/
 }	t_fractal;
-
-typedef struct s_img
-{
-	void	*imt_ptr;/*pointer to image struct*/
-	char	*pixels_ptr; /*points to the actuals pixels*/
-	int		bpp;
-	int		endian;
-	int		line_len;
-}	t_img;
 
 //**** String utils ***//
 int			ft_strncmp(char *s1, char *s2, int n);
