@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:34:57 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/09 14:13:21 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/10 22:06:12 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	(void) fractal;/*Borrar este casteo ya que lo necesito cambiarlo luego*/
 	c.x = map(x, new_range, old_range);
 	c.y = map(y, new_range, old_range);
+
+	while (?????)
+	{
+		z = sum_complex(square_complex(z), c);
+		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
+		{
+			my_pixel_put();
+			return ;
+		}
+	}
 }
 
 void	fractal_render(t_fractal *fractal)

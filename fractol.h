@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:52:55 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/09 16:45:44 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/10 22:08:58 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct s_fractal
 	/*Image*/
 	t_img	img;
 	/*Hooks member variable*/
+	double	escape_value;
+	int	iterations_definition;/*value tight with the image quality and rendering speed*/
 }	t_fractal;
 
 //**** String utils ***//
