@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:39:36 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/09 16:31:57 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:15:38 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	map(double n, t_range new_range, t_range old_range)
 	double	scale;
 
 	scale = (new_range.max - new_range.min) / (old_range.max - old_range.min);
-	return (scale * (n - old_range.min) + old_range.min);
+	return (scale * (n - old_range.min) + new_range.min);
 }
 
 t_complex	sum_complex(t_complex z1, t_complex z2)

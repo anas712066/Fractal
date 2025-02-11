@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:53:40 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/10 22:04:57 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/11 20:00:53 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	malloc_error(void)
 void	data_init(t_fractal *fractal)
 {
 	fractal->ecape_value = 4;/*2 ^ 2 my hypotenus*/
+	fractal->iterations_definition = 42;
 }
 
 void	fractal_init(t_fractal *fractal)
