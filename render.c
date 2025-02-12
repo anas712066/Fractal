@@ -52,7 +52,7 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 
 	limits.old_limits_windoows.min = 0;
 	limits.old_limits_windows.max = HEIGHT;
-	
+
 //	(void) fractal;/*Borrar este casteo ya que lo necesito cambiarlo luego*/
 	c.x = map(x, limits.new_limits, limits_old_limits);
 	c.y = map(y, limits.new_limits, limits_old_limits_windows);
