@@ -89,10 +89,14 @@ typedef struct s_range
 {
 	double	min;
 	double	max;
-	int	*range_limits;
-	int	*old_limits;
-	int	*old_limits_windows;
 }	t_range;
+
+typedef struct s_limits
+{
+	double	new_limits;
+	double	old_limits;
+	double	old_limits_windows;
+}	t_limits;
 
 double		map(double n, t_range new_range, t_range old_range);
 t_complex	sum_complex(t_complex z1, t_complex z2);

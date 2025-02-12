@@ -39,18 +39,23 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	t_complex	c;
 	int		i;
 	int		color;
-	t_range		limits;
+	t_limits		limits;
 
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	limits.range_limits = {-2.0, 2.0};
-	limits.old_limits = {0, WIDTH};
-	limits.old_limts_windows = {0, HEIGHT};
+	limits.new_limits.min = -2.0;
+	limits.new_limits.max = 2.0;
+
+	limits.old_limits.min = 0;
+	limits.old_limits.max = WIDTH;
+
+	limits.old_limits_windoows.min = 0;
+	limits.old_limits_windows.max = HEIGHT;
 	
 //	(void) fractal;/*Borrar este casteo ya que lo necesito cambiarlo luego*/
-	c.x = map(x, limits.range_limits, limits_old_limits);
-	c.y = map(y, limits.range_limits, limits_old_limits_windows);
+	c.x = map(x, limits.new_limits, limits_old_limits);
+	c.y = map(y, limits.new_limits, limits_old_limits_windows);
 
 	while (i < fractal->iterations_definition)
 	{
