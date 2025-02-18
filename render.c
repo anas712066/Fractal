@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:34:57 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/11 21:28:02 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:42:37 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	int		i;
 	int		color;
 	t_limits		limits;
+	t_color_range	 	color_ranges;
 
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
 	limits.new_limits.min = -2.0;
 	limits.new_limits.max = 2.0;
+	color_ranges	= BLACK;
 
 	limits.old_limits.min = 0;
 	limits.old_limits.max = WIDTH;
@@ -63,7 +65,7 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
 			color = (int)map(i, (t_range){BLACK, WHITE}),
-					(t_range){0, fractal->iteratios_defintion});
+					((t_range){0, fractal->iterations_defintion});
 			my_pixel_put();
 			return ;
 		}

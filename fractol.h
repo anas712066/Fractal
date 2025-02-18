@@ -93,9 +93,9 @@ typedef struct s_range
 
 typedef struct s_limits
 {
-	double	new_limits;
-	double	old_limits;
-	double	old_limits_windows;
+	t_range	new_limits;
+	t_range	old_limits;
+	t_range	old_limits_windows;
 }	t_limits;
 
 double		map(double n, t_range new_range, t_range old_range);
