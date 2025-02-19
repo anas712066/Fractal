@@ -33,6 +33,9 @@
  *		./fractol julia <real> <i> 
  *		z = pixel_point + constant
 */
+
+
+
 void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_complex	z;
@@ -40,14 +43,12 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	int		i;
 	int		color;
 	t_limits		limits;
-	t_color_range	 	color_ranges;
 
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
 	limits.new_limits.min = -2.0;
 	limits.new_limits.max = 2.0;
-	color_ranges	= BLACK;
 
 	limits.old_limits.min = 0;
 	limits.old_limits.max = WIDTH;
@@ -69,8 +70,9 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 			my_pixel_put();
 			return ;
 		}
+		i++;
 	}
-	
+
 }
 
 void	fractal_render(t_fractal *fractal)

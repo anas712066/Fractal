@@ -65,6 +65,8 @@ typedef struct s_img
 	int		line_len;
 }	t_img;
 
+
+
 typedef struct s_fractal
 {
 	char	*name;
@@ -97,6 +99,7 @@ typedef struct s_limits
 	t_range	old_limits;
 	t_range	old_limits_windows;
 }	t_limits;
+
 
 double		map(double n, t_range new_range, t_range old_range);
 t_complex	sum_complex(t_complex z1, t_complex z2);
