@@ -100,6 +100,18 @@ typedef struct s_limits
 	t_range	old_limits_windows;
 }	t_limits;
 
+typedef struct s_pixel_data
+{
+	t_complex	z;
+	t_complex	c;
+	t_limits	limits;
+}	t_pixel_data;
+
+typedef struct s_color_range
+{
+	t_range	color_range;
+	t_range	iteration_range;
+}	t_color_range;
 
 double		map(double n, t_range new_range, t_range old_range);
 t_complex	sum_complex(t_complex z1, t_complex z2);
