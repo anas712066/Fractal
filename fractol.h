@@ -119,7 +119,7 @@ t_complex	square_complex(t_complex z);
 
 /*render*/
 void		fractal_render(t_fractal *fractal);
-void		handle_pixel(int x, int y, t_fractal *fractal);
+//void		handle_pixel(int x, int y, t_fractal *fractal);
 int			get_color(int iteration, int max_iterations);
 
 #endif

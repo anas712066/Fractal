@@ -20,7 +20,7 @@ static void	malloc_error(void)
 
 void	data_init(t_fractal *fractal)
 {
-	fractal->ecape_value = 4;/*2 ^ 2 my hypotenus*/
+	fractal->escape_value = 4;/*2 ^ 2 my hypotenus*/
 	fractal->iterations_definition = 42;
 }
 
