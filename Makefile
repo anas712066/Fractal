@@ -8,7 +8,8 @@ SRCS = main.c \
        init.c \
        math_utils.c \
        render.c \
-       string_utils.c
+       string_utils.c \
+       get_color.c
 	   
 OBJS = $(SRCS:.c=.o)
 

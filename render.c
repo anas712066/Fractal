@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:34:57 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/18 21:42:37 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:22:05 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,13 @@
  *		./fractol julia <real> <i> 
  *		z = pixel_point + constant
 */
+static void	my_pixel_put(int x, int y, t_img *img, int color)
+{
+	int	offset;
 
-
+	offset = (y * img->line_len) + (x + (img->bpp / 8));
+	(unsigned int *)(img->pixels_ptr + offset) = color;
+}
 
 void	handle_pixel(int x, int y, t_fractal *fractal)
 {
@@ -61,11 +66,14 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	{
 		data.z = sum_complex(square_complex(z), c);
 		if ((data.z.x * data.z.x) + (data.z.y * data.z.y) > fractal->escape_value)
-			break;
-		i++;
+		{
+			color = get_color(i, fractal->iterations_definitions);
+			my_pixel_put(x, y, &fractal->img, color);
+			return ;
+		}
+		++i;;
 	}
-	color = get_color(i, fractal->iterations_definitions);
-	my_pixel_put(x, y, color);
+	my_pixel_put(
 }/*
 		{
 			color = get_color(i, fractal->iterations_definitions);
