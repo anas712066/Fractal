@@ -79,6 +79,7 @@ typedef struct s_fractal
 	int		iterations_definition;
 	double	shift_x;
 	double	shift_y;
+	double	zoom;
 }	t_fractal;
 
 //**** String utils ***//
@@ -126,5 +127,6 @@ int			get_color(int iteration, int max_iterations);
 void		fractal_render(t_fractal *fractal);
 int			key_handler(int keysym, t_fractal *fractal);
 int		close_handler(t_fractal *fractal);
+int			mouse_handler(int button, int x, int y, t_fractal *fractal);
 
 #endif

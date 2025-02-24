@@ -24,6 +24,7 @@ static void	data_init(t_fractal *fractal)
 	fractal->iterations_definition = 42;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
+	fractal->zoom = 1.0;
 }
 
 static void	events_init(t_fractal *fractal)
@@ -33,12 +34,9 @@ static void	events_init(t_fractal *fractal)
 			KeyPressMask,
 			key_handler,
 			fractal);
-
-/*	mlx_hook(fractal->mlx_window,
-		ButtonPress,
-		ButtonPressMask,
+	mlx_mouse_hook(fractal->mlx_window,
 		mouse_handler,
-		fractal);*/
+		fractal);
 	mlx_hook(fractal->mlx_window,
 		DestroyNotify,
 		StructureNotifyMask,
