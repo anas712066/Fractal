@@ -28,11 +28,14 @@ int	ft_strncmp(char *s1, char *s2, int n)
 
 void	putstr_fd(char *s, int fd)
 {
+	ssize_t	ret;
+
 	if (!s || fd < 0)
 		return ;
 	if (*s != '\0')
 	{
-		write(fd, s, 1);
+		ret = write(fd, s, 1);
+		(void)ret;
 		putstr_fd(s + 1, fd);
 	}
 }

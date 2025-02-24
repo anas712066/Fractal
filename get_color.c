@@ -23,5 +23,3 @@ int	get_color(int iteration, int max_iterations)
 
 	return (int)map(iteration, ranges.color_range, ranges.iteration_range);
 }
-
-}

@@ -42,7 +42,7 @@ void	fractal_init(t_fractal *fractal)
 	fractal->img.img_ptr = mlx_new_image(fractal->mlx_connection,
 			WIDTH,
 			HEIGHT);
-	if (NULL == fractal->img.img_ptr)
+	if (!fractal->img.img_ptr)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
 		mlx_destroy_display(fractal->mlx_connection);
@@ -53,6 +53,14 @@ void	fractal_init(t_fractal *fractal)
 			&fractal->img.bpp,
 			&fractal->img.line_len,
 			&fractal->img.endian);
-	/*events_init(fractal),
-	data_init(fractal);*/
+	if (!fractal->img.pixels_ptr)
+	{
+		mlx_destroy_image(fractal->mlx_connection, fractal->img.img_ptr);
+		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
+		mlx_destroy_display(fractal->mlx_connection);
+		free(fractal->mlx_connection);
+		malloc_error();
+	}
+	//events_init(fractal),
+	data_init(fractal);
 }

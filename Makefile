@@ -14,10 +14,13 @@ SRCS = main.c \
 OBJS = $(SRCS:.c=.o)
 
 # Reglas principales
-all: $(NAME) fractol.h Makefile
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) ./minilibx-linux/libmlx_Linux.a -Lmlx_linux -I./minilibx-linux/ -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	
+%.o: %.c fractol.h Makefile
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	rm -f $(OBJS)
