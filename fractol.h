@@ -14,13 +14,13 @@
 # define FRACTOL_H
 
 # include "minilibx-linux/mlx.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
 # include <math.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 # define ERROR_MESSAGE "Please enter \n\t\" \
 ./fractol mandelbrot\" or \n\t\"./fractol julia <value_1> <value_2>\"\n"
@@ -77,6 +77,8 @@ typedef struct s_fractal
 	/*Hooks member variable*/
 	double	escape_value;
 	int		iterations_definition;
+	double	shift_x;
+	double	shift_y;
 }	t_fractal;
 
 //**** String utils ***//
@@ -122,5 +124,7 @@ void		fractal_render(t_fractal *fractal);
 //void		handle_pixel(int x, int y, t_fractal *fractal);
 int			get_color(int iteration, int max_iterations);
 void		fractal_render(t_fractal *fractal);
+int			key_handler(int keysym, t_fractal *fractal);
+int		close_handler(t_fractal *fractal);
 
 #endif

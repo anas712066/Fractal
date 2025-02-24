@@ -37,7 +37,10 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 {
 	int	offset;
 
-	offset = (y * img->line_len) + (x + (img->bpp / 8));
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+		return ;
+
+	offset = (y * img->line_len) + (x * (img->bpp / 8));
 	*(unsigned int *)(img->pixels_ptr + offset) = color;
 }
 
@@ -59,8 +62,8 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	data.limits.old_limits_windows.max = HEIGHT;
 	inverted_y_range.min = 2.0;
 	inverted_y_range.max = -2.0;
-	data.c.x = map(x, data.limits.new_limits, data.limits.old_limits);
-	data.c.y = map(y, inverted_y_range, data.limits.old_limits_windows);
+	data.c.x = map(x, data.limits.new_limits, data.limits.old_limits) + fractal->shift_x;
+	data.c.y = map(y, inverted_y_range, data.limits.old_limits_windows) + fractal->shift_y;
 	while (i < fractal->iterations_definition)
 	{
 		data.z = sum_complex(square_complex(data.z), data.c);
