@@ -48,9 +48,12 @@ static void	mandel_vs_julia(t_pixel_data *data, t_fractal *fractal)
 {
 	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
-		data->z.x = fractal->julia_x;
-		data->z.y = fractal->julia_y;
+		data->z.x = data->c.x;  // El pixel es z
+		data->z.y = data->c.y;
+		data->c.x = fractal->julia_x; // Constante
+		data->c.y = fractal->julia_y;
 	}
+
 	else
 	{
 		data->z.x = data->c.x;
@@ -66,8 +69,8 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	t_range		inverted_y_range;
 
 	i = 0;
-//	data.z.x = 0.0;
-//	data.z.y = 0.0;
+	data.z.x = 0.0;
+	data.z.y = 0.0;
 	data.limits.new_limits.min = -2.0;
 	data.limits.new_limits.max = 2.0;
 	data.limits.old_limits.min = 0;

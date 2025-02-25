@@ -25,6 +25,18 @@ static void	data_init(t_fractal *fractal)
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
+
+	if (ft_strncmp(fractal->name, "julia", 5) != 0)
+	{
+		// No sobrescribe los valores si ya están asignados
+		fractal->julia_x = fractal->julia_x;
+		fractal->julia_y = fractal->julia_y;
+	}
+	else
+	{
+		fractal->julia_x = 0.0;
+		fractal->julia_y = 0.0;
+	}
 }
 
 static void	events_init(t_fractal *fractal)
@@ -41,6 +53,11 @@ static void	events_init(t_fractal *fractal)
 		DestroyNotify,
 		StructureNotifyMask,
 		close_handler,
+		fractal);
+	mlx_hook(fractal->mlx_window,
+		MotionNotify,
+		PointerMotionMask,
+		julia_track,
 		fractal);
 }
 

@@ -129,5 +129,6 @@ int			key_handler(int keysym, t_fractal *fractal);
 int			close_handler(t_fractal *fractal);
 int			mouse_handler(int button, int x, int y, t_fractal *fractal);
 double		atodbl(char *s);
+int			julia_track(int x, int y, t_fractal *fractal);
 
 #endif

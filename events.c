@@ -65,3 +65,27 @@ int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 	fractal_render(fractal);
 	return (0);
 }
+
+int	julia_track(int x, int y, t_fractal *fractal)
+{
+	double	new_julia_x, new_julia_y;
+	t_range x_range, y_range, pixel_x_range, pixel_y_range;
+
+	x_range.min = -2.0; x_range.max = 2.0;
+	y_range.min = 2.0; y_range.max = -2.0;
+	pixel_x_range.min = 0; pixel_x_range.max = WIDTH;
+	pixel_y_range.min = 0; pixel_y_range.max = HEIGHT;
+
+	new_julia_x = map(x, x_range, pixel_x_range);
+	new_julia_y = map(y, y_range, pixel_y_range);
+
+	// Solo renderiza si los valores cambiaron
+	if (new_julia_x != fractal->julia_x || new_julia_y != fractal->julia_y)
+	{
+		fractal->julia_x = new_julia_x;
+		fractal->julia_y = new_julia_y;
+		fractal_render(fractal);
+	}
+
+	return 0;
+}
