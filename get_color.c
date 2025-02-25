@@ -16,6 +16,9 @@ int	get_color(int iteration, int max_iterations)
 {
 	t_color_range	ranges;
 
+	if (iteration >= max_iterations)
+		return (BLACK);
+
 	ranges.color_range.min = BLACK;
 	ranges.color_range.max = WHITE;
 	ranges.iteration_range.min = 0;
