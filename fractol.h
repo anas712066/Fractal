@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:52:55 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/22 19:50:39 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:27:09 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ typedef struct s_img
 	int		line_len;
 }	t_img;
 
-
-
 typedef struct s_fractal
 {
 	char	*name;
@@ -80,6 +78,8 @@ typedef struct s_fractal
 	double	shift_x;
 	double	shift_y;
 	double	zoom;
+	double	julia_x;
+	double	julia_y;
 }	t_fractal;
 
 //**** String utils ***//
@@ -126,7 +126,8 @@ void		fractal_render(t_fractal *fractal);
 int			get_color(int iteration, int max_iterations);
 void		fractal_render(t_fractal *fractal);
 int			key_handler(int keysym, t_fractal *fractal);
-int		close_handler(t_fractal *fractal);
+int			close_handler(t_fractal *fractal);
 int			mouse_handler(int button, int x, int y, t_fractal *fractal);
+double		atodbl(char *s);
 
 #endif

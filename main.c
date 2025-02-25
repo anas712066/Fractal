@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 13:47:49 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/08 16:50:22 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:33:30 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int ac, char **av)
 		(ac == 4 && !ft_strncmp(av[1], "julia", 5)))
 	{
 		fractal.name = av[1];
+		fractal.julia_x = atodbl(av[2]);
+		fractal.julia_y = atodbl(av[3]);
 		// Inicia la aplicación correctamente
 		fractal_init(&fractal);
 		fractal_render(&fractal);

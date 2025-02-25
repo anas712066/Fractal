@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 23:34:57 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/23 20:13:39 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:41:36 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,20 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixels_ptr + offset) = color;
 }
 
+static void	mandel_vs_julia(t_pixel_data *data, t_fractal *fractal)
+{
+	if (!ft_strncmp(fractal->name, "julia", 5))
+	{
+		data->z.x = fractal->julia_x;
+		data->z.y = fractal->julia_y;
+	}
+	else
+	{
+		data->z.x = data->c.x;
+		data->z.y = data->c.y;
+	}
+}
+
 static void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_pixel_data	data;
@@ -52,8 +66,8 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	t_range		inverted_y_range;
 
 	i = 0;
-	data.z.x = 0.0;
-	data.z.y = 0.0;
+//	data.z.x = 0.0;
+//	data.z.y = 0.0;
 	data.limits.new_limits.min = -2.0;
 	data.limits.new_limits.max = 2.0;
 	data.limits.old_limits.min = 0;
@@ -64,6 +78,9 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	inverted_y_range.max = -2.0;
 	data.c.x = (map(x, data.limits.new_limits, data.limits.old_limits) * fractal->zoom) + fractal->shift_x;
 	data.c.y = (map(y, inverted_y_range, data.limits.old_limits_windows) * fractal->zoom) + fractal->shift_y;
+
+	mandel_vs_julia(&data, fractal);
+
 	while (i < fractal->iterations_definition)
 	{
 		data.z = sum_complex(square_complex(data.z), data.c);
