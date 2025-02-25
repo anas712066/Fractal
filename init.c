@@ -59,6 +59,7 @@ static void	events_init(t_fractal *fractal)
 		PointerMotionMask,
 		julia_track,
 		fractal);
+
 }
 
 void	fractal_init(t_fractal *fractal)

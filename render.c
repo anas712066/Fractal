@@ -48,12 +48,11 @@ static void	mandel_vs_julia(t_pixel_data *data, t_fractal *fractal)
 {
 	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
-		data->z.x = data->c.x;  // El pixel es z
+		data->z.x = data->c.x;
 		data->z.y = data->c.y;
-		data->c.x = fractal->julia_x; // Constante
+		data->c.x = fractal->julia_x;
 		data->c.y = fractal->julia_y;
 	}
-
 	else
 	{
 		data->z.x = data->c.x;
