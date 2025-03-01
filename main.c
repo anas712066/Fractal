@@ -44,17 +44,19 @@ int	main(int ac, char **av)
 		fractal.name = av[1];
 
 		/* Inicializar julia_x y julia_y solo si es julia */
-	if (!ft_strncmp(av[1], "julia", 5))
-	{
-		if (ac != 4) // Verificamos que se pasen 2 valores
-		{
-			putstr_fd("Error: Julia necesita dos parámetros (real e imaginario)\n", STDERR_FILENO);
-			exit(EXIT_FAILURE);
-		}
-		fractal.julia_x = atodbl(av[2]);
-		fractal.julia_y = atodbl(av[3]);
-	}
-
+if (!ft_strncmp(av[1], "julia", 5))
+{
+    if (ac == 4)
+    {
+        fractal.julia_x = atodbl(av[2]);
+        fractal.julia_y = atodbl(av[3]);
+    }
+    else
+    {
+        fractal.julia_x = -0.7; // Valores por defecto
+        fractal.julia_y = 0.27015;
+    }
+}
 
 	else
 	{

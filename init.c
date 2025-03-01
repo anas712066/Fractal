@@ -6,7 +6,7 @@
 /*   By: mumajeed <mumajeed@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 15:53:40 by mumajeed          #+#    #+#             */
-/*   Updated: 2025/02/11 20:00:53 by mumajeed         ###   ########.fr       */
+/*   Updated: 2025/03/01 22:06:51 by mumajeed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,17 @@ static void	data_init(t_fractal *fractal)
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
+	fractal->allow_julia_change = 0;
 
-	if (ft_strncmp(fractal->name, "julia", 5) != 0)
+	if (!ft_strncmp(fractal->name, "julia", 5))
 	{
-		// No sobrescribe los valores si ya están asignados
-		fractal->julia_x = fractal->julia_x;
-		fractal->julia_y = fractal->julia_y;
+    		if (fractal->julia_x == 0.0 && fractal->julia_y == 0.0)
+    		{
+        		fractal->julia_x = -0.7; // Valor por defecto
+        		fractal->julia_y = 0.27015;
+    		}
 	}
-	else
-	{
-		fractal->julia_x = 0.0;
-		fractal->julia_y = 0.0;
-	}
+
 }
 
 static void	events_init(t_fractal *fractal)

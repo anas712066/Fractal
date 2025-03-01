@@ -80,6 +80,7 @@ typedef struct s_fractal
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
+	int		allow_julia_change;
 }	t_fractal;
 
 //**** String utils ***//
