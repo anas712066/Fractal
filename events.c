@@ -38,7 +38,7 @@ int	close_handler(t_fractal *fractal)
 }
 
 
-int	key_handler(int keysym, t_fractal *fractal)
+/*int	key_handler(int keysym, t_fractal *fractal)
 {
     if (keysym == XK_Escape)
         close_handler(fractal);
@@ -55,7 +55,7 @@ int	key_handler(int keysym, t_fractal *fractal)
     
     fractal_render(fractal);
     return (0);
-}
+}*/
 
 /*int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {

@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-#include "minilibx-linux/mlx.h"
 
 /*int	main(int ac, char **av)
 {
@@ -34,7 +32,7 @@
 		exit(EXIT_FAILURE);
 	}
 }*/
-int	main(int ac, char **av)
+/*int	main(int ac, char **av)
 {
 	t_fractal	fractal;
 
@@ -43,7 +41,7 @@ int	main(int ac, char **av)
 	{
 		fractal.name = av[1];
 
-		/* Inicializar julia_x y julia_y solo si es julia */
+		Inicializar julia_x y julia_y solo si es julia 
 if (!ft_strncmp(av[1], "julia", 5))
 {
     if (ac == 4)
@@ -64,6 +62,45 @@ if (!ft_strncmp(av[1], "julia", 5))
 		fractal.julia_y = 0.0;
 	}
 
+		fractal_init(&fractal);
+		fractal_render(&fractal);
+		if (fractal.mlx_connection && fractal.mlx_window)
+			mlx_loop(fractal.mlx_connection);
+	}
+	else
+	{
+		putstr_fd(ERROR_MESSAGE, STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+}*/
+#include "fractol.h"
+#include "minilibx-linux/mlx.h"
+
+static void	init_julia(t_fractal *fractal, int ac, char **av)
+{
+	if (ac == 4)
+	{
+		fractal->julia_x = atodbl(av[2]);
+		fractal->julia_y = atodbl(av[3]);
+	}
+	else
+	{
+		fractal->julia_x = -0.7;
+		fractal->julia_y = 0.27015;
+	}
+}
+
+int	main(int ac, char **av)
+{
+	t_fractal	fractal;
+
+	fractal.color_shift = 100;
+	if ((ac == 2 && !ft_strncmp(av[1], "mandelbrot", 10)) ||
+		(ac == 4 && !ft_strncmp(av[1], "julia", 5)))
+	{
+		fractal.name = av[1];
+		if (!ft_strncmp(av[1], "julia", 5))
+			init_julia(&fractal, ac, av);
 		fractal_init(&fractal);
 		fractal_render(&fractal);
 		if (fractal.mlx_connection && fractal.mlx_window)

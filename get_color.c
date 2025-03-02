@@ -12,14 +12,14 @@
 
 #include "fractol.h"
 
-int	get_color(int iteration, int max_iterations, t_fractal *fractal)
+int	get_color(int iter, int max_iter, t_fractal *fractal)
 {
 	int	base_color;
 
-	if (iteration >= max_iterations)
-		return (0x000000); /* Negro */
-
-	base_color = (iteration * fractal->color_shift) % 255;
+	if (iter >= max_iter)
+		return (0x000000);
+	base_color = (iter * fractal->color_shift) % 255;
 	return ((base_color << 16) | (base_color << 8) | base_color);
 }
+
 
