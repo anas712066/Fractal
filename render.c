@@ -78,7 +78,7 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	data.c.y = map(y, data.limits.new_limits, data.limits.old_limits_windows) *
 		fractal->zoom + fractal->shift_y;
 	mandel_vs_julia(&data, fractal);
-	while (i < fractal->terations_definition)
+	while (i < fractal->iterations_definition)
 	{
 		data.z = sum_complex(square_complex(data.z), data.c);
 		if ((data.z.x * data.z.x) + (data.z.y * data.z.y) > fractal->escape_value)
