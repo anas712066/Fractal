@@ -12,14 +12,42 @@
 
 #include "fractol.h"
 
-int	get_color(int iter, int max_iter, t_fractal *fractal)
+/*int	get_color(int iteration, int max_iteration, t_fractal *fractal)
 {
-	int	base_color;
+    double	t;
+    t_color	color;
 
-	if (iter >= max_iter)
-		return (0x000000);
-	base_color = (iter * fractal->color_shift) % 255;
-	return ((base_color << 16) | (base_color << 8) | base_color);
+    if (iteration >= max_iteration)
+        return (BLACK);
+    t = (double)iteration / (double)max_iteration;
+    color.red = (int)(9 * (1 - t) * t * t * t * 255);
+    color.green = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+    color.blue = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+
+    // Apply color shift
+    color.red = (color.red + fractal->color_shift) % 256;
+    color.green = (color.green + fractal->color_shift) % 256;
+    color.blue = (color.blue + fractal->color_shift) % 256;
+
+    return ((color.red << 16) | (color.green << 8) | color.blue);
+}*/
+
+int	get_color(int iteration, int max_iteration, t_fractal *fractal)
+{
+    double	t;
+    t_color	color;
+
+    if (iteration >= max_iteration)
+        return (BLACK);
+    t = (double)iteration / (double)max_iteration;
+    color.red = (int)(9 * (1 - t) * t * t * t * 255);
+    color.green = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+    color.blue = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+
+    // Apply color shift
+    color.red = (color.red + fractal->color_shift) % 256;
+    color.green = (color.green + fractal->color_shift) % 256;
+    color.blue = (color.blue + fractal->color_shift) % 256;
+
+    return ((color.red << 16) | (color.green << 8) | color.blue);
 }
-
-
