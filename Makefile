@@ -1,8 +1,7 @@
 NAME = fractol
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux/ -Imlx_linux -O3
-
+CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux/ -Imlx_linux -O3 -fsanitize=address
 
 SRCS = main.c \
        init.c \

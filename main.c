@@ -76,12 +76,44 @@ if (!ft_strncmp(av[1], "julia", 5))
 #include "fractol.h"
 #include "minilibx-linux/mlx.h"
 
-static void	init_julia(t_fractal *fractal, int ac, char **av)
+static int	check_args(char *arg)
 {
-    if (ac == 4)
+	size_t	i;
+	int	point_found;
+
+	point_found = 0;
+	i = 0;
+	if (arg[0] != '-' && !ft_isdigit(arg[0]))
+		return (0);
+	i++;
+	while (arg[i] != '\0')
+	{
+		if (!ft_isdigit(arg[i]) && arg[i] != '.')
+		       return (0);
+		if (arg[i] == '.')
+		{
+			if (point_found == 0)
+				point_found = 1;
+			else
+				return (0);
+		}		
+		i++;
+	}
+	return (1);
+}
+
+static void	init_julia(t_fractal *fractal, char **av)
+{
+    if (check_args(av[2]) == 1 && check_args(av[3]) == 1)
     {
         fractal->julia_x = atodbl(av[2]);
         fractal->julia_y = atodbl(av[3]);
+	if (fractal->julia_x > 1 || fractal->julia_x < -1 || 
+			fractal->julia_y > 1 || fractal->julia_y < -1)
+	{
+		putstr_fd("Argument out of range: please give numbers between 1 and -1\n", 2);
+		exit(0);
+	}
     }
     else
     {
@@ -100,7 +132,7 @@ int	main(int ac, char **av)
     {
         fractal.name = av[1];
         if (!ft_strncmp(av[1], "julia", 5))
-            init_julia(&fractal, ac, av);
+            init_julia(&fractal, av);
         fractal_init(&fractal);
         fractal_render(&fractal);
         if (fractal.mlx_connection && fractal.mlx_window)

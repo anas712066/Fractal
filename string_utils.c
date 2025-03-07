@@ -26,6 +26,11 @@
 	return (*s1 - *s2);
 }*/
 
+int	ft_isdigit(char	c)
+{
+	return (c >= '0' && c <= '9');
+}
+
 int	ft_strncmp(char *s1, char *s2, int n)
 {
 	int i;
@@ -46,19 +51,24 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
+static size_t	ft_strlen(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
 
 void	putstr_fd(char *s, int fd)
 {
-	ssize_t	ret;
-
+	int ret;
+	
 	if (!s || fd < 0)
 		return ;
-	if (*s != '\0')
-	{
-		ret = write(fd, s, 1);
-		(void)ret;
-		putstr_fd(s + 1, fd);
-	}
+	ret = write(fd, s, ft_strlen(s));
+	(void)ret;
 }
 
 double	atodbl(char *s)
